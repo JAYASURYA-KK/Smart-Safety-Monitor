@@ -11,7 +11,7 @@ from ultralytics import YOLO
 # ---------- CONFIG ----------
 MODEL_PATH = "best.pt"      # path to your trained model
 CAMERA_INDEX = 0         # 0 = default webcam, try 1/2 if you have multiple cameras
-CONF_THRESHOLD = 0.5        # minimum confidence to show a detection
+CONF_THRESHOLD = 0.25       # minimum confidence to show a detection
 IMG_SIZE = 640               # should match training imgsz
 # -----------------------------
 

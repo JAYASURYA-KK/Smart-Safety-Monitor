@@ -1,26 +1,24 @@
 /*
-  ESP32 PPE Alert Receiver
-  --------------------------------
+  ESP32 PPE Alert Receiver (LED Only)
+  -----------------------------------
   Listens over USB Serial for the command "ALERT"
   sent from the PC (Python + YOLO script).
-  When received: turns ON buzzer + LED for ALERT_DURATION ms, then OFF.
+
+  When "ALERT" is received:
+    - LED turns ON for 3 seconds
+    - LED turns OFF automatically
 
   Wiring:
-    Buzzer (+)  -> GPIO4
-    Buzzer (-)  -> GND
-    LED (+)     -> 220ohm resistor -> GPIO2
-    LED (-)     -> GND
+    LED (+) -> 220Ω resistor -> GPIO2
+    LED (-) -> GND
 */
 
-#define BUZZER_PIN 4
-#define LED_PIN    2
-#define ALERT_DURATION_MS 3000   // 3 seconds, change to 2000 for 2s
+#define LED_PIN 2
+#define ALERT_DURATION_MS 3000   // LED ON time (3 seconds)
 
 void setup() {
-  pinMode(BUZZER_PIN, OUTPUT);
   pinMode(LED_PIN, OUTPUT);
 
-  digitalWrite(BUZZER_PIN, LOW);
   digitalWrite(LED_PIN, LOW);
 
   Serial.begin(115200);
@@ -30,7 +28,7 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     String command = Serial.readStringUntil('\n');
-    command.trim();  // remove \r or whitespace
+    command.trim();   // Remove spaces and newline
 
     if (command == "ALERT") {
       triggerAlert();
@@ -39,13 +37,13 @@ void loop() {
 }
 
 void triggerAlert() {
-  Serial.println("ALERT received -> Buzzer + LED ON");
-  digitalWrite(BUZZER_PIN, HIGH);
+  Serial.println("ALERT received -> LED ON");
+
   digitalWrite(LED_PIN, HIGH);
 
   delay(ALERT_DURATION_MS);
 
-  digitalWrite(BUZZER_PIN, LOW);
   digitalWrite(LED_PIN, LOW);
-  Serial.println("Alert finished -> OFF");
+
+  Serial.println("Alert finished -> LED OFF");
 }
