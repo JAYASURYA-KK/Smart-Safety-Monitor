@@ -1,0 +1,102 @@
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.7450', '0.5759', '0.6304', '0.5522', '0.4729'] max=0.7450
+  Result -> ID: 101, Score: 0.7450 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6728', '0.4680', '0.5620', '0.4824', '0.4344'] max=0.6728
+  Result -> ID: 101, Score: 0.6728 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6889', '0.5355', '0.5861', '0.5446', '0.4794'] max=0.6889
+  Result -> ID: 101, Score: 0.6889 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6664', '0.5247', '0.5761', '0.5080', '0.4819'] max=0.6664
+  Result -> ID: 101, Score: 0.6664 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6437', '0.5066', '0.5363', '0.5134', '0.4465'] max=0.6437
+  Result -> ID: 101, Score: 0.6437 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6486', '0.4834', '0.5479', '0.5035', '0.4553'] max=0.6486
+  Result -> ID: 101, Score: 0.6486 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6603', '0.4992', '0.5756', '0.5448', '0.4766'] max=0.6603
+  Result -> ID: 101, Score: 0.6603 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6644', '0.5280', '0.5850', '0.5300', '0.4672'] max=0.6644
+  Result -> ID: 101, Score: 0.6644 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6880', '0.5245', '0.5493', '0.4993', '0.4415'] max=0.6880
+  Result -> ID: 101, Score: 0.6880 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6330', '0.4883', '0.5112', '0.5145', '0.4369'] max=0.6330
+  Result -> ID: 101, Score: 0.6330 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6303', '0.4932', '0.5253', '0.4413', '0.4425'] max=0.6303
+  Result -> ID: 101, Score: 0.6303 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6159', '0.5067', '0.5322', '0.4896', '0.4314'] max=0.6159
+  Result -> ID: 101, Score: 0.6159 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.7241', '0.5627', '0.5933', '0.5163', '0.4523'] max=0.7241
+  Result -> ID: 101, Score: 0.7241 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.7046', '0.5391', '0.5965', '0.4977', '0.4583'] max=0.7046
+  Result -> ID: 101, Score: 0.7046 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6567', '0.5314', '0.5603', '0.4874', '0.4272'] max=0.6567
+  Result -> ID: 101, Score: 0.6567 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.6786', '0.5761', '0.5562', '0.5193', '0.4558'] max=0.6786
+  Result -> ID: 101, Score: 0.6786 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 4 faces.
+  Comparing with ID 101: sims=['0.6663', '0.5423', '0.6063', '0.5153', '0.4615'] max=0.6663
+  Result -> ID: 101, Score: 0.6663 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 5 faces.
+  Comparing with ID 101: sims=['0.6346', '0.5509', '0.5089', '0.5083', '0.4267'] max=0.6346
+  Result -> ID: 101, Score: 0.6346 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6116', '0.5158', '0.4598', '0.4660', '0.4275'] max=0.6116
+  Result -> ID: 101, Score: 0.6116 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.6402', '0.5620', '0.5540', '0.4898', '0.4297'] max=0.6402
+  Result -> ID: 101, Score: 0.6402 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.5830', '0.5610', '0.4759', '0.5116', '0.4118'] max=0.5830
+  Result -> ID: 101, Score: 0.5830 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 4 faces.
+  Comparing with ID 101: sims=['0.5824', '0.4671', '0.4908', '0.4768', '0.4007'] max=0.5824
+  Result -> ID: 101, Score: 0.5824 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 2 faces.
+  Comparing with ID 101: sims=['0.5824', '0.5393', '0.5094', '0.5194', '0.4117'] max=0.5824
+  Result -> ID: 101, Score: 0.5824 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.1956', '0.2064', '0.1664', '0.2253', '0.1803'] max=0.2253
+  Result -> ID: 101, Score: 0.2253 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.1700', '0.1999', '0.1459', '0.1706', '0.1116'] max=0.1999
+  Result -> ID: 101, Score: 0.1999 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.1592', '0.2106', '0.1210', '0.1881', '0.0771'] max=0.2106
+  Result -> ID: 101, Score: 0.2106 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.1365', '0.1932', '0.1256', '0.2002', '0.1378'] max=0.2002
+  Result -> ID: 101, Score: 0.2002 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 4 faces.
+  Comparing with ID 101: sims=['0.1909', '0.2202', '0.1834', '0.2111', '0.1445'] max=0.2202
+  Result -> ID: 101, Score: 0.2202 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 5 faces.
+  Comparing with ID 101: sims=['0.1703', '0.1751', '0.1484', '0.2228', '0.1546'] max=0.2228
+  Result -> ID: 101, Score: 0.2228 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.2177', '0.1932', '0.2213', '0.2464', '0.1912'] max=0.2464
+  Result -> ID: 101, Score: 0.2464 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.1811', '0.1996', '0.1459', '0.1965', '0.1073'] max=0.1996
+  Result -> ID: 101, Score: 0.1996 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.2507', '0.2793', '0.1981', '0.2476', '0.1825'] max=0.2793
+  Result -> ID: 101, Score: 0.2793 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 3 faces.
+  Comparing with ID 101: sims=['0.5861', '0.4888', '0.4845', '0.4084', '0.3620'] max=0.5861
+  Result -> ID: 101, Score: 0.5861 (thresh=0.45)
+Frame received: shape=(480, 640, 3). Detected 4 faces.
+  Comparing with ID 101: sims=['0.6523', '0.5365', '0.5766', '0.4475', '0.4293'] max=0.6523
+  Result -> ID: 101, Score: 0.6523 (thresh=0.45)

@@ -1,2 +1,35 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.so
+
+# Virtual Environments
+.venv/
+backend/.venv/
+env/
+venv/
+
+# Environment Variables
+.env
+
+# Node/React
+node_modules/
+frontend/node_modules/
+frontend/dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# SQLite Database
+*.db
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Custom Application Data (Private)
+backend/face/faces/
+backend/face/face_database.pkl
+backend/face/persons.csv
+backend/test/test.jpg
