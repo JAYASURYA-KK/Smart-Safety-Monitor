@@ -329,6 +329,13 @@ export function Workers() {
                         <td className="px-4 py-3 text-right">
                           <div className="flex items-center justify-end gap-2">
                             <button
+                              onClick={() => setExpandedRow(isExpanded ? null : w.id)}
+                              className="p-1.5 rounded-lg hover:bg-slate-700/50 text-slate-400 hover:text-cyan-300 transition"
+                              title={isExpanded ? 'Collapse Faces' : 'View Faces'}
+                            >
+                              {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                            </button>
+                            <button
                               onClick={() => setShowDetailModal(w)}
                               className="p-1.5 rounded-lg hover:bg-slate-700/50 text-slate-400 hover:text-cyan-300 transition"
                               title="View Details"

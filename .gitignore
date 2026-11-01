@@ -1,35 +1,94 @@
-# Python
+# ==========================================
+# Python & Bytecode
+# ==========================================
 __pycache__/
 *.py[cod]
+*$py.class
 *.so
+*.egg-info/
+dist/
+build/
 
+# ==========================================
 # Virtual Environments
+# ==========================================
 .venv/
 backend/.venv/
 env/
 venv/
+ENV/
 
-# Environment Variables
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
 .env
+.env.local
+.env.*.local
+*.env
+!*.env.example
+secrets.h
+**/secrets.h
+!*.secrets.h.example
+*.pem
+*.key
 
-# Node/React
+# ==========================================
+# Node / Frontend Build
+# ==========================================
 node_modules/
 frontend/node_modules/
 frontend/dist/
-build/
+.eslintcache
 
-# IDEs
-.vscode/
-.idea/
-
-# SQLite Database
+# ==========================================
+# Databases & SQLite WAL Files
+# ==========================================
 *.db
-*.sqlite3
-*.db-shm
 *.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+storage.db
+backend/storage.db
+backend/storage.db-wal
+backend/storage.db-shm
 
-# Custom Application Data (Private)
+# ==========================================
+# Biometrics & Facial Recognition Data
+# ==========================================
 backend/face/faces/
 backend/face/face_database.pkl
 backend/face/persons.csv
+backend/face/*.pkl
+backend/face/*.csv
 backend/test/test.jpg
+**/faces/
+face_images/
+registered_faces/
+
+# ==========================================
+# Logs & Temporary Files
+# ==========================================
+*.log
+face_debug.log
+logs/
+
+# ==========================================
+# Large Media & Video Files
+# (Demo videos hosted on YouTube)
+# ==========================================
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wav
+Smart Safety Construction Site _ YOLOv10 AI PPE Detection + ESP32 IoT Smart Helmet 1080P.mp4
+Smart_Safety_Monitor_Voiceover_Music_Mixed.mp4
+
+# ==========================================
+# IDEs & System Files
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

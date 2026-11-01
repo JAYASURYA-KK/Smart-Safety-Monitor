@@ -12,11 +12,13 @@ import {
   Usb,
   Wifi,
   XCircle,
+  HardHat,
 } from 'lucide-react';
 import type { RealtimeTelemetry, SafetyAlert, CameraStatus, CameraAvailabilityInfo } from '../types';
 import { StatsCard } from '../components/StatsCard';
 import { CameraCard } from '../components/CameraCard';
 import { apiService } from '../services/api';
+import { useHelmetTelemetry } from '../hooks/useHelmetTelemetry';
 
 interface OverviewProps {
   telemetry: RealtimeTelemetry;
@@ -29,6 +31,7 @@ export const Overview: React.FC<OverviewProps> = ({
   onNavigate,
   onExpandCamera,
 }) => {
+  const helmet = useHelmetTelemetry();
   const [alerts, setAlerts] = useState<SafetyAlert[]>([]);
   const [cameraAvailability, setCameraAvailability] = useState<Record<string, CameraAvailabilityInfo>>({
     '1': { camera_id: 'CAM-01', name: 'PC Webcam', available: true, type: 'pc', always_available: true },
@@ -169,6 +172,63 @@ export const Overview: React.FC<OverviewProps> = ({
             <span className={cam3Available ? 'text-emerald-400 text-[10px]' : 'text-slate-600 text-[10px]'}>{cam3Available ? 'Connected' : 'None'}</span>
           </div>
         </div>
+      </div>
+
+      {/* Smart Helmet Wearable IoT Status Card */}
+      <div className="glass-panel p-4 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900/90 via-slate-900 to-amber-950/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center space-x-3.5">
+          <div className="h-11 w-11 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 shadow-lg shadow-amber-950/40">
+            <HardHat className="h-6 w-6" />
+          </div>
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-bold text-white text-sm">Smart Helmet Wearable Node</span>
+              <span className="text-[11px] font-mono text-slate-400">ESP32-HELMET-01</span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                  helmet.isOnline
+                    ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
+                    : 'bg-slate-800 text-slate-400 border border-slate-700'
+                }`}
+              >
+                {helmet.isOnline ? 'ONLINE' : 'OFFLINE'}
+              </span>
+              {helmet.data?.sos_alert && (
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-600 text-white animate-bounce shadow-md shadow-rose-950">
+                  🚨 WORKER SOS ACTIVE
+                </span>
+              )}
+              {helmet.data?.gas_alert && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800 animate-pulse">
+                  GAS HAZARD
+                </span>
+              )}
+              {helmet.data?.impact_alert && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800 animate-pulse">
+                  IMPACT DETECTED
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-400 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono">
+              <span>Temp: <strong className="text-amber-400">{helmet.data?.temperature !== undefined ? `${helmet.data.temperature.toFixed(1)}°C` : '--'}</strong></span>
+              <span>•</span>
+              <span>Humidity: <strong className="text-cyan-400">{helmet.data?.humidity !== undefined ? `${helmet.data.humidity.toFixed(1)}%` : '--'}</strong></span>
+              <span>•</span>
+              <span>Peak: <strong className="text-white">{helmet.data?.peak_g !== undefined ? `${helmet.data.peak_g.toFixed(2)}g` : '--'}</strong></span>
+              <span>•</span>
+              <span>Tilt: <strong className="text-cyan-300">P: {helmet.pitchDeg}° / R: {helmet.rollDeg}°</strong></span>
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => onNavigate('helmet')}
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition shadow-lg shadow-amber-950/60 self-start md:self-auto shrink-0"
+        >
+          <HardHat className="h-4 w-4" />
+          <span>Launch 3D Helmet View</span>
+          <ArrowUpRight className="h-3.5 w-3.5" />
+        </button>
       </div>
 
       {/* Live Camera Cards */}

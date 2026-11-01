@@ -5,6 +5,7 @@ import { Sidebar } from './components/Sidebar';
 import type { PageId } from './components/Sidebar';
 import { Overview } from './pages/Overview';
 import { LiveMonitoring } from './pages/LiveMonitoring';
+import { HelmetIoT } from './pages/HelmetIoT';
 import { SafetyAlerts } from './pages/SafetyAlerts';
 import { Analytics } from './pages/Analytics';
 import { EventHistory } from './pages/EventHistory';
@@ -38,6 +39,8 @@ export function App() {
             onExpandCamera={(cam) => setExpandedCamera(cam)}
           />
         );
+      case 'helmet':
+        return <HelmetIoT />;
       case 'alerts':
         return <SafetyAlerts />;
       case 'analytics':

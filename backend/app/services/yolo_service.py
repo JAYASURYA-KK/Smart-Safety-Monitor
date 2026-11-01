@@ -1,11 +1,19 @@
 import os
 import cv2
-import torch
 import numpy as np
 from pathlib import Path
 from typing import List, Dict, Tuple, Any
-from ultralytics import YOLO
 from ..config import settings
+
+try:
+    import torch
+    from ultralytics import YOLO
+    TORCH_AVAILABLE = True
+except Exception as e:
+    print(f"[YoloService Warning] Torch/Ultralytics deferred load ({e}).")
+    torch = None
+    YOLO = None
+    TORCH_AVAILABLE = False
 
 class YoloService:
     """
@@ -30,7 +38,7 @@ class YoloService:
         self.class_names: Dict[int, str] = {}
         self.compliance_classes: List[str] = []
         self.violation_classes: List[str] = []
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = "cuda" if (torch is not None and torch.cuda.is_available()) else "cpu"
         self.conf_threshold = settings.CONFIDENCE_THRESHOLD
         self.iou_threshold = settings.IOU_THRESHOLD
         
@@ -38,6 +46,18 @@ class YoloService:
         self._initialized = True
 
     def load_model(self):
+        global torch, YOLO, TORCH_AVAILABLE
+        if not TORCH_AVAILABLE:
+            try:
+                import torch as _torch
+                from ultralytics import YOLO as _YOLO
+                torch = _torch
+                YOLO = _YOLO
+                TORCH_AVAILABLE = True
+                self.device = "cuda" if torch.cuda.is_available() else "cpu"
+            except Exception as e:
+                print(f"[YoloService] Torch runtime deferred: {e}")
+                return
         print(f"[YoloService] Loading PyTorch YOLO model from {self.model_path} on device {self.device}...")
         try:
             if not os.path.exists(self.model_path):
@@ -51,7 +71,19 @@ class YoloService:
             
             self.model = YOLO(self.model_path)
             # Dynamically extract exact class names from model.names
-            self.class_names = self.model.names if hasattr(self.model, 'names') else {}
+            raw_names = self.model.names if hasattr(self.model, 'names') else {}
+            
+            self.class_names = {}
+            for k, v in raw_names.items():
+                v_lower = v.lower()
+                if v_lower in ["no-hardhat", "no_hardhat"]: v = "no_helmet"
+                elif v_lower in ["no-goggles", "no_goggles", "no-goggle"]: v = "no_goggle"
+                elif v_lower in ["no-safety vest", "no_safety_vest", "no-vest"]: v = "no_vest"
+                elif v_lower in ["no-gloves"]: v = "no_gloves"
+                elif v_lower in ["no-boots", "no-shoes"]: v = "no_boots"
+                elif v_lower in ["hardhat", "hard-hat"]: v = "helmet"
+                elif v_lower in ["safety vest", "safety-vest"]: v = "vest"
+                self.class_names[k] = v
             
             self.compliance_classes = []
             self.violation_classes = []

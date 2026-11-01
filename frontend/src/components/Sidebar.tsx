@@ -8,11 +8,13 @@ import {
   Cpu,
   Settings,
   Users,
+  HardHat,
 } from 'lucide-react';
 
 export type PageId =
   | 'overview'
   | 'monitoring'
+  | 'helmet'
   | 'alerts'
   | 'analytics'
   | 'history'
@@ -34,6 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     { id: 'overview' as PageId, label: 'Overview', icon: LayoutDashboard },
     { id: 'monitoring' as PageId, label: 'Live Monitoring', icon: Video },
+    { id: 'helmet' as PageId, label: 'Smart Helmet IoT', icon: HardHat },
     {
       id: 'alerts' as PageId,
       label: 'Safety Alerts',

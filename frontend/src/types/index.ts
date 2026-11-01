@@ -114,9 +114,51 @@ export interface SystemSettings {
   auto_reconnect: boolean;
   alert_rules: AlertRule[];
   esp32_enabled: boolean;
+  esp32_connected?: boolean;
   esp32_com_port: string;
   esp32_baud_rate: number;
   esp32_status?: string;
+}
+
+export interface HelmetSensorData {
+  temperature?: number;
+  humidity?: number;
+  dht_ok?: boolean;
+  gas_alert?: boolean;
+  high_temp_alert?: boolean;
+  impact_alert?: boolean;
+  sos_alert?: boolean;
+  any_alert?: boolean;
+  mpu_ok?: boolean;
+  mq7_do?: number | string;
+  peak_g?: number;
+  mpu_temperature?: number;
+  uptime_s?: number;
+  uptime_ms?: number;
+  accel_x?: number;
+  accel_y?: number;
+  accel_z?: number;
+  gyro_x?: number;
+  gyro_y?: number;
+  gyro_z?: number;
+  timestamp?: number | string;
+}
+
+export interface HelmetHistoryItem {
+  uptime_s?: number;
+  uptime_ms?: number;
+  temperature?: number | null;
+  humidity?: number | null;
+  accel_x?: number;
+  accel_y?: number;
+  accel_z?: number;
+  peak_g?: number | null;
+  dht_ok?: boolean;
+  gas_alert?: boolean;
+  sos_alert?: boolean;
+  impact_alert?: boolean;
+  any_alert?: boolean;
+  label?: string;
 }
 
 export interface AnalyticsSummary {

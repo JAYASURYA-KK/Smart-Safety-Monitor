@@ -1,11 +1,15 @@
-import asyncio
 import os
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+
+import asyncio
 from datetime import datetime
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .config import settings
-from .routers import cameras, alerts, analytics, system, settings as settings_router, workers
+from .routers import cameras, alerts, analytics, system, settings as settings_router, workers, events
 from .websocket.manager import ws_manager
 from .services.camera_service import camera_manager
 from .services.yolo_service import yolo_service
@@ -37,6 +41,7 @@ app.add_middleware(
 # Include API Routers
 app.include_router(cameras.router)
 app.include_router(alerts.router)
+app.include_router(events.router)
 app.include_router(analytics.router)
 app.include_router(system.router)
 app.include_router(settings_router.router)
