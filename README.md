@@ -3,8 +3,6 @@
 # 🦺 Smart Safety Construction Site Monitor
 ### Real-Time YOLO AI PPE Compliance Detection + ESP32 IoT Smart Wearable Helmet
 
-[![Smart Safety Monitor Demo Video](https://img.youtube.com/vi/RTOscc7tufk/maxresdefault.jpg)](https://youtu.be/RTOscc7tufk "Click to Watch the Full Video on YouTube")
-
 <p align="center">
   <a href="https://youtu.be/RTOscc7tufk" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-Watch%20Demo%20Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch Demo Video on YouTube" />
