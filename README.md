@@ -211,16 +211,57 @@ Open **`http://localhost:5173`** in your browser.
 
 ---
 
-## 🔌 Hardware Setup (ESP32)
+## 🔌 Hardware Setup & Wiring Schematics
 
-1. **Smart Helmet Wearable**:
-   * Open `esp32/advance_level/construction_safety_wifimanager/construction_safety_wifimanager.ino` in Arduino IDE.
-   * Wire the **MPU-6050** (I2C: SDA 21, SCL 22), **DHT-22** (Pin 4), **MQ-7** (Pin 34), and **SOS Button** (Pin 16).
-   * Flash to the ESP32 and configure WiFi via captive portal.
-2. **Alarm Base Station**:
-   * Open `esp32/esp32_ppe_alert.ino`.
-   * Connect buzzer (Pin 25) and LED strobe (Pin 26).
-   * Connect via USB and set COM port in the dashboard Settings.
+### 1. Smart Helmet Sensor Wiring Diagram
+
+<div align="center">
+  <img src="hardware_connection_diagram.png" alt="Smart Safety Helmet ESP32 Wiring Schematic" width="100%" style="max-width:950px; border-radius:10px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
+  <p><em>Figure: Complete Hardware Pinout & Sensor Interconnection Architecture for ESP32 Wearable Node</em></p>
+</div>
+
+---
+
+### 2. Detailed Pinout & Interconnection Table
+
+| Component / Sensor | Sensor Pin | ESP32 Pin / GPIO | Signal / Voltage | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **MPU-6050 (6-DoF IMU)** | **VCC** | **3V3** | 3.3V DC | Main sensor logic power |
+| | **GND** | **GND** | 0V Ground | System common ground |
+| | **SCL** | **GPIO 22** | I2C Clock | Hardware I2C Clock Bus |
+| | **SDA** | **GPIO 21** | I2C Data | Hardware I2C Data Bus |
+| **DHT-22 (Climate)** | **VCC** | **3V3** | 3.3V DC | Sensor power rail |
+| | **DATA** | **GPIO 4** | Digital I/O | Temperature & Humidity single-bus signal |
+| | **GND** | **GND** | 0V Ground | Common ground |
+| **MQ-7 (Carbon Monoxide)** | **VCC** | **VIN (5V)** | 5.0V DC | Heater coil power rail |
+| | **GND** | **GND** | 0V Ground | Common ground |
+| | **DO** | **GPIO 27** | Digital Input | Threshold CO leak alarm signal |
+| **Active Piezo Buzzer** | **POS (+)** | **GPIO 25** | Digital Output | Audio alarm & emergency siren tone |
+| | **NEG (-)** | **GND** | 0V Ground | Common ground |
+| **Emergency SOS Switch** | **Terminal 1** | **GPIO 26** | Digital Input | Active-LOW trigger (`INPUT_PULLUP`) |
+| | **Terminal 2** | **GND** | 0V Ground | Ground reference |
+| **WiFi Config Reset** | **BOOT Button** | **GPIO 0** | Digital Input | Hold 5s to clear WiFi and reopen setup portal |
+
+---
+
+### 3. Firmware Flashing & Startup
+
+#### A. Smart Helmet Wearable Node
+1. Open Arduino IDE and install the required libraries:
+   * `WiFiManager` (by tzapu)
+   * `Firebase Arduino Client Library for ESP8266 and ESP32` (by Mobizt)
+   * `DHT sensor library` (by Adafruit)
+   * `Adafruit Unified Sensor`
+2. Open `esp32/advance_level/construction_safety_wifimanager.ino`.
+3. Create your `secrets.h` from `secrets.h.example` with your Firebase credentials.
+4. Select board **ESP32 Dev Module** and flash via USB.
+5. On first boot, connect your smartphone or PC to the **`Helmet-Setup`** WiFi hotspot and browse to `192.168.4.1` to select your site's local WiFi network.
+
+#### B. Physical Alarm Base Station Receiver
+1. Open `esp32/esp32_ppe_alert.ino`.
+2. Connect the alert LED/Strobe to **GPIO 2** with a 220Ω current-limiting resistor to **GND**.
+3. Flash the sketch to the base station ESP32 board.
+4. Connect via USB to the host monitoring PC; the backend automatically sends high-priority serial commands (`ALERT`) whenever PPE non-compliance is detected.
 
 ---
 
